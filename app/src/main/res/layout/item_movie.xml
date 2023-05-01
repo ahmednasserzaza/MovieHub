@@ -24,11 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_poster"
                 android:layout_width="match_parent"
                 android:layout_height="196dp"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{item.posterPath}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -40,6 +41,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_small"
                 android:textSize="@dimen/text_medium"
+                android:text="@{item.Title}"
+                android:onClick="@{() -> listener.onClickMovie(item)}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_poster"
                 tools:text="The rock" />
@@ -50,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_small"
                 android:textSize="@dimen/text_medium"
+                android:text="@{item.voteAverage.toString()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_movie_name"
                 tools:text="8.5" />
