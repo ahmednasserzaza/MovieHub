@@ -15,19 +15,19 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_small"
-        android:backgroundTint="@color/cardview_light_background"
+        android:layout_margin="@dimen/spacing_tiny"
         app:cardElevation="@dimen/elevation_small"
         app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_poster"
                 android:layout_width="match_parent"
-                android:layout_height="196dp"
+                android:layout_height="180dp"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{item.posterPath}"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,24 +37,34 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_movie_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small"
-                android:textSize="@dimen/text_medium"
-                android:text="@{item.Title}"
+                android:layout_marginHorizontal="@dimen/spacing_small"
+                android:layout_marginVertical="@dimen/spacing_small"
+                android:textSize="@dimen/text_large"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:onClick="@{() -> listener.onClickMovie(item)}"
+                android:text="@{item.Title}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_poster"
                 tools:text="The rock" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_movie_rate"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small"
+                android:layout_marginHorizontal="@dimen/spacing_small"
+                android:layout_marginVertical="@dimen/spacing_small"
                 android:textSize="@dimen/text_medium"
+                android:drawableStart="@drawable/ic_rate"
+                android:drawablePadding="@dimen/spacing_small"
+                android:gravity="center_vertical"
                 android:text="@{item.voteAverage.toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_movie_name"
                 tools:text="8.5" />
 

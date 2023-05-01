@@ -37,7 +37,11 @@ fun <T> showWhenError(view: View, state: State<T>?) {
 
 @BindingAdapter(value = ["app:imageUrl"])
 fun setImageFromUrl(view: ImageView, url: String?) {
-    Glide.with(view).load(Constant.IMAGE_PATH + url).error(R.drawable.ic_error)
+    Glide
+        .with(view)
+        .load(Constant.IMAGE_PATH + url)
+        .placeholder(R.drawable.movie_placeholder)
+        .error(R.drawable.movie_error)
         .centerCrop().into(view)
 }
 
