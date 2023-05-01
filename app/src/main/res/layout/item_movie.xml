@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="item"
+            type="com.fighter.moviehub.data.model.Movie" />
+        <variable
+            name="listener"
+            type="com.fighter.moviehub.ui.MovieInteractionListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
