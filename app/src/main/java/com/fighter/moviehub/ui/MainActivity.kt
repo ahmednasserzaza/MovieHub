@@ -16,5 +16,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        val adapter = MoviesAdapter(mutableListOf() , viewModel)
+        binding.recyclerMovie.adapter = adapter
     }
 }
