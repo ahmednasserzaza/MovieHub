@@ -21,12 +21,11 @@ class MainViewModel : BaseViewModel() , MovieInteractionListener {
         getAllPopularMovies()
     }
     private fun getAllPopularMovies() {
-        val moviesDisposable = repository.getPopularMovies()
+        repository.getPopularMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::fetchPopularMovies, ::onError)
-
-        addToCompositeDisposable(moviesDisposable)
+            .addToCompositeDisposable()
     }
 
     private fun fetchPopularMovies(state: State<PopularMoviesResponse?>) {
