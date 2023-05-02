@@ -9,11 +9,11 @@ import retrofit2.Response
 
 class MovieRepository {
     fun getPopularMovies(): Observable<State<PopularMoviesResponse?>> {
-        return wrapWithObservable { API.movieService.getPopularMovies(BuildConfig.API_KEY) }
+        return wrapWithObservable(API.movieService.getPopularMovies(BuildConfig.API_KEY))
     }
 
-    private fun <T> wrapWithObservable(function: () -> Observable<Response<T>>): Observable<State<T?>> {
-        return function.invoke()
+    private fun <T> wrapWithObservable(response: Observable<Response<T>>): Observable<State<T?>> {
+        return response
             .map {
                 if (it.isSuccessful) {
                     State.Success(it.body())
