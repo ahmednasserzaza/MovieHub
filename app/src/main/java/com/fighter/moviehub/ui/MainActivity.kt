@@ -1,9 +1,9 @@
 package com.fighter.moviehub.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
-import com.fighter.moviehub.R
+import androidx.appcompat.app.AppCompatActivity
 import com.fighter.moviehub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,15 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = MoviesAdapter(mutableListOf() , viewModel)
+        val adapter = MoviesAdapter(mutableListOf(), viewModel)
         binding.recyclerMovie.adapter = adapter
+
+        onClickMovie()
+    }
+
+    private fun onClickMovie() {
+        viewModel.movieData.observe(this) { movie ->
+            Toast.makeText(this, "${movie.title}", Toast.LENGTH_SHORT).show()
+        }
     }
 }

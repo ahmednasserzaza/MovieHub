@@ -17,6 +17,9 @@ class MainViewModel : BaseViewModel() , MovieInteractionListener {
     private val _popularMovies = MutableLiveData<State<PopularMoviesResponse?>>()
     val popularMovies: LiveData<State<PopularMoviesResponse?>> = _popularMovies
 
+    private val _movieData = MutableLiveData<Movie>()
+    val movieData:LiveData<Movie> = _movieData
+
     init {
         getAllPopularMovies()
     }
@@ -38,6 +41,7 @@ class MainViewModel : BaseViewModel() , MovieInteractionListener {
 
     override fun onClickMovie(movie: Movie) {
         log(movie.title.toString())
+        _movieData.postValue(movie)
     }
 
 }

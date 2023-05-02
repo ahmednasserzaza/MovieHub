@@ -20,15 +20,15 @@
             android:id="@+id/recycler_movie"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="@dimen/spacing_simi_medium"
             android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:showWhenSuccess="@{viewModel.popularMovies}"
+            android:padding="@dimen/spacing_simi_medium"
             app:items="@{viewModel.popularMovies.toData().movies}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:showWhenSuccess="@{viewModel.popularMovies}"
             app:spanCount="2"
             tools:listitem="@layout/item_movie" />
 
@@ -36,21 +36,21 @@
             android:id="@+id/progress_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:showWhenLoading="@{viewModel.popularMovies}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenLoading="@{viewModel.popularMovies}" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_error"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:showWhenError="@{viewModel.popularMovies}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenError="@{viewModel.popularMovies}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
