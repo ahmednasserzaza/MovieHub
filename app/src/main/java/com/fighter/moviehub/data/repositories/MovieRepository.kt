@@ -4,15 +4,15 @@ import com.fighter.moviehub.BuildConfig
 import com.fighter.moviehub.data.model.PopularMoviesResponse
 import com.fighter.moviehub.networking.API
 import com.fighter.moviehub.utils.State
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 
 class MovieRepository {
-    fun getPopularMovies(): Observable<State<PopularMoviesResponse?>> {
+    fun getPopularMovies(): Single<State<PopularMoviesResponse?>> {
         return wrapWithObservable(API.movieService.getPopularMovies(BuildConfig.API_KEY))
     }
 
-    private fun <T> wrapWithObservable(response: Observable<Response<T>>): Observable<State<T?>> {
+    private fun <T> wrapWithObservable(response: Single<Response<T>>): Single<State<T?>> {
         return response
             .map {
                 if (it.isSuccessful) {
@@ -21,6 +21,5 @@ class MovieRepository {
                     State.Error(it.message())
                 }
             }.onErrorReturn { State.Error(it.message.toString()) }
-            .startWithItem(State.Loading)
     }
 }
