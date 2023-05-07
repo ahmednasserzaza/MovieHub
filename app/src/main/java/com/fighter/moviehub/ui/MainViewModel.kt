@@ -10,7 +10,7 @@ import com.fighter.moviehub.utils.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MainViewModel : BaseViewModel() , MovieInteractionListener {
+class MainViewModel : BaseViewModel(), MovieInteractionListener {
     override val tag: String = this::class.java.simpleName
     private val repository = MovieRepository()
 
@@ -18,12 +18,14 @@ class MainViewModel : BaseViewModel() , MovieInteractionListener {
     val popularMovies: LiveData<State<PopularMoviesResponse?>> = _popularMovies
 
     private val _movieData = MutableLiveData<Movie>()
-    val movieData:LiveData<Movie> = _movieData
+    val movieData: LiveData<Movie> = _movieData
 
     init {
         getAllPopularMovies()
     }
+
     private fun getAllPopularMovies() {
+        _popularMovies.postValue(State.Loading)
         repository.getPopularMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -36,12 +38,11 @@ class MainViewModel : BaseViewModel() , MovieInteractionListener {
     }
 
     private fun onError(throwable: Throwable) {
-        log(throwable.message.toString())
+        _popularMovies.postValue(State.Error(throwable.message.toString()))
     }
 
     override fun onClickMovie(movie: Movie) {
         log(movie.title.toString())
         _movieData.postValue(movie)
     }
-
 }
