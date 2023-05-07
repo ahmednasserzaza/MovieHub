@@ -75,4 +75,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
     implementation "androidx.activity:activity-ktx:1.7.1"
     implementation "androidx.fragment:fragment-ktx:1.5.7"
+
+    // splash api dependency
+    implementation "androidx.core:core-splashscreen:1.0.1"
 }
