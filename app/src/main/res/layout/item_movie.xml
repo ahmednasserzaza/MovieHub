@@ -12,6 +12,7 @@
         <variable
             name="listener"
             type="com.fighter.moviehub.ui.MovieInteractionListener" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -46,12 +46,12 @@
             android:id="@+id/image_error"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            app:srcCompat="@drawable/movie_error"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showWhenError="@{viewModel.popularMovies}" />
+            app:showWhenError="@{viewModel.popularMovies}"
+            app:srcCompat="@drawable/movie_error" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
